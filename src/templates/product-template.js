@@ -120,7 +120,7 @@ const ProductPage = ({ location, data }) => {
             key={collection.id}
             to={`/collections/${collection.handle}`}
             className={
-              collections[0].title === collection.title
+              collections[0]?.title === collection.title
                 ? 'active-filter-button'
                 : ''
             }
