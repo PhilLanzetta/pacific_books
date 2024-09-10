@@ -81,6 +81,8 @@ const ProductPage = ({ location, data }) => {
 
   const allCollections = data.allShopifyCollection.nodes
 
+  const mediaImages = media.slice(1)
+
   const { addVariantToCart } = useStore()
 
   const tagline = metafields.filter(
@@ -132,7 +134,7 @@ const ProductPage = ({ location, data }) => {
       <div className='product-page-container'>
         <div className='product-left'>
           <Slider {...settings}>
-            {media.map((image) => (
+            {mediaImages.map((image) => (
               <GatsbyImage
                 key={image.id}
                 image={image.image?.localFile?.childImageSharp?.gatsbyImageData}
