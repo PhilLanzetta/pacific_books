@@ -114,7 +114,11 @@ const ProductPage = ({ location, data }) => {
   }
 
   return (
-    <Layout location={location}>
+    <Layout
+      location={location}
+      collection={true}
+      collectionTitle={collections[0]?.title}
+    >
       <h2 className='collection-page-filter'>Filter:</h2>
       <div className='product-tag-container'>
         {allCollections.map((collection) => (

@@ -201,9 +201,16 @@ header {
   color: #fff;
   background: transparent;
   align-items: center;
-  padding: 20px 3vw;
+  padding: 3vw;
   z-index: 300;
   font-family: var(--font-secondary);
+}
+
+header.fixed-background {
+  border-bottom: 1px solid #707070;
+  background: #fff;
+  mix-blend-mode: normal;
+  color: #000;
 }
 
 header div {
@@ -219,7 +226,11 @@ header div {
   transition: all var(--fast-transition);
 }
 
-.header-logo img {
+.header-svg {
+  display: flex;
+}
+
+.header-logo svg {
   width: clamp(140px, 15vw, 320px);
 }
 
@@ -231,6 +242,9 @@ header div {
 .header-menu {
   font-family: var(--font-secondary);
   position: relative;
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
 }
 
 .header-menu-button {
@@ -240,7 +254,7 @@ header div {
 
 #nav-icon {
   width: 30px;
-  height: 30px;
+  height: 20px;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -259,7 +273,7 @@ header div {
   position: absolute;
   height: 2px;
   width: 100%;
-  background: #fff;
+  background: currentColor;
   opacity: 1;
   left: 0;
   top: 0;
@@ -274,16 +288,16 @@ header div {
 }
 
 #nav-icon span:nth-child(1) {
-  top: 9px;
+  top: 0px;
 }
 
 #nav-icon span:nth-child(2),
 #nav-icon span:nth-child(3) {
-  top: 18px;
+  top: 9px;
 }
 
 #nav-icon span:nth-child(4) {
-  top: 27px;
+  top: 18px;
 }
 
 #nav-icon.open span:nth-child(1) {
@@ -329,6 +343,7 @@ header div {
   background: #fff;
   z-index: 200;
   font-family: var(--font-secondary);
+  border-right: 1px solid #000;
 }
 
 .secondary-main,
@@ -377,6 +392,21 @@ header div {
   transition: all 400ms;
 }
 
+.filter-header-container {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.filter-hide {
+  opacity: 0;
+  transition: all 400ms;
+}
+
+.filter-show {
+  opacity: 1;
+  transition: all 400ms;
+}
+
 .shop-cart {
   position: fixed;
   right: 3vw;
@@ -384,8 +414,12 @@ header div {
   justify-content: flex-end;
 }
 
+.shop-cart p {
+  font-size: calc(var(--font-xs-resp) + 2px);
+}
+
 .cart-icon {
-  fill: #fff;
+  fill: currentColor;
   height: 20px;
   width: 20px;
 }
@@ -415,6 +449,7 @@ header div {
   overflow-y: scroll;
   z-index: 160;
   font-family: var(--font-secondary);
+  border-left: 1px solid #000;
 }
 
 .close-cart {
@@ -516,9 +551,29 @@ header div {
   gap: var(--spacing-sm);
 }
 
+@media screen and (max-width: 1100px) {
+  header {
+    padding-bottom: calc(3vw + 20px);
+  }
+
+  .secondary-menu {
+    padding-top: 90px;
+  }
+
+  .header-menu {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .filter-header-container {
+    position: absolute;
+    top: 40px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   header {
     padding: 20px;
+    padding-bottom: 50px;
   }
 }
 
@@ -1196,7 +1251,6 @@ PROJECTS
 
 .active-filter-button {
   text-decoration: underline;
-  color: #000;
   transition: all 400ms;
 }
 
@@ -2203,8 +2257,8 @@ PRODUCT
 }
 
 .product-tiles-container {
-  border-top: 1px solid #707070;
   padding: 3vw;
+  padding-top: calc(110px + 3vw);
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
@@ -2227,13 +2281,9 @@ PRODUCT
 .collection-page-filter {
   display: inline-block;
   font-weight: normal;
-  padding-left: calc(3vw + 50px);
-  padding-top: 45px;
-  padding-bottom: var(--spacing-sm);
   font-family: var(--font-secondary);
   font-size: calc(var(--font-xs-resp) + 2px);
-  position: relative;
-  z-index: 200;
+  margin-bottom: 0;
 }
 
 .individual-product {
@@ -2242,14 +2292,9 @@ PRODUCT
 
 .product-tag-container {
   display: inline-flex;
-  margin-left: var(--spacing-sm);
-  flex-wrap: wrap;
   gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-md);
   font-family: var(--font-secondary);
   font-size: calc(var(--font-xs-resp) + 2px);
-  position: relative;
-  z-index: 350;
 }
 
 .view-button {
@@ -2354,11 +2399,8 @@ PRODUCTS MEDIA
 */
 
 @media screen and (max-width: 1180px) {
-  .collection-page-filter {
-    padding-left: 3vw;
-    padding-top: 100px;
-    margin-bottom: 0;
-    padding-bottom: 10px;
+  .product-tag-container {
+    z-index: 10;
   }
 }
 
@@ -2370,10 +2412,6 @@ PRODUCTS MEDIA
   .product-page-container {
     flex-wrap: wrap;
     padding-top: 3vw;
-  }
-
-  .product-tag-container {
-    margin-left: 20px;
   }
 
   .product-right,
@@ -2393,10 +2431,6 @@ PRODUCTS MEDIA
     flex-direction: column;
     padding: 3vw;
     gap: 3vw;
-  }
-
-  .collection-page-filter {
-    padding-left: 20px;
   }
 }
 

@@ -9,20 +9,7 @@ const CollectionTemplate = ({ data, location }) => {
   const allCollections = data.allShopifyCollection.nodes
 
   return (
-    <Layout location={location}>
-      <h2 className='collection-page-filter'>Filter:</h2>
-      <div className='product-tag-container'>
-        {allCollections.map((collection) => (
-          <Link
-            key={collection.id}
-            to={`/collections/${collection.handle}`}
-            activeClassName='active-filter-button'
-          >
-            {collection.title}
-          </Link>
-        ))}
-      </div>
-
+    <Layout location={location} collection={true}>
       <div className='product-tiles-container'>
         {products.map((product) => (
           <ProductTile key={product.id} product={product}></ProductTile>
