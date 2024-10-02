@@ -26,6 +26,7 @@ const Header = ({ location, collection, collectionTitle }) => {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const showCart = location?.pathname !== '/'
   const { cart } = useStore()
+  console.log(collectionTitle)
 
   return (
     <>
@@ -58,7 +59,7 @@ const Header = ({ location, collection, collectionTitle }) => {
                   to='/collections/editions'
                   activeClassName='active-filter-button'
                   className={
-                    collectionTitle === 'Editions' ? 'active-filter-button' : ''
+                    collectionTitle === 'Apparel' ? 'active-filter-button' : ''
                   }
                 >
                   Clothing
@@ -67,7 +68,7 @@ const Header = ({ location, collection, collectionTitle }) => {
                   to='/collections/editions'
                   activeClassName='active-filter-button'
                   className={
-                    collectionTitle === 'Editions' ? 'active-filter-button' : ''
+                    collectionTitle === 'Apparel' ? 'active-filter-button' : ''
                   }
                 >
                   Editions

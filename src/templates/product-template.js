@@ -81,6 +81,10 @@ const ProductPage = ({ location, data }) => {
 
   const allCollections = data.allShopifyCollection.nodes
 
+  const filteredCollections = collections.filter(
+    (collection) => collection.title !== 'Everything'
+  )
+
   const mediaImages = media.slice(1)
 
   const { addVariantToCart } = useStore()
@@ -117,7 +121,7 @@ const ProductPage = ({ location, data }) => {
     <Layout
       location={location}
       collection={true}
-      collectionTitle={collections[0]?.title}
+      collectionTitle={filteredCollections[0]?.title}
     >
       <h2 className='collection-page-filter'>Filter:</h2>
       <div className='product-tag-container'>
@@ -220,7 +224,7 @@ export const query = graphql`
           image {
             localFile {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData(layout: FULL_WIDTH)
               }
             }
           }
