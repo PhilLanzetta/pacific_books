@@ -149,6 +149,7 @@ a {
   font-family: inherit;
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
   transition: all var(--fast-transition);
 }
 
@@ -331,10 +332,10 @@ header div {
   top: 0;
   left: 0;
   transform: translateX(-100%);
-  height: 100vh;
+  max-height: 100vh;
   overflow-y: scroll;
-  margin-top: calc(6vw + 45px);
-  width: clamp(350px, 40vw, 1200px);
+  padding-top: calc(6vw + 45px);
+  width: clamp(300px, 100vw, 600px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -343,7 +344,8 @@ header div {
   background: #fff;
   z-index: 200;
   font-family: var(--font-secondary);
-  border-right: 1px solid #000;
+  border-right: 1px solid #707070;
+  border-bottom: 1px solid #707070;
 }
 
 .secondary-main,
@@ -438,18 +440,19 @@ header div {
   position: fixed;
   top: 0;
   right: 0;
-  width: clamp(350px, 40vw, 1200px);
+  width: clamp(300px, 100vw, 600px);
   padding: 20px 3vw;
   padding-top: calc(9vw + 40px);
   background: #fff;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 100vh;
+  max-height: 100vh;
   overflow-y: scroll;
   z-index: 160;
   font-family: var(--font-secondary);
-  border-left: 1px solid #000;
+  border-left: 1px solid #707070;
+  border-bottom: 1px solid #707070;
 }
 
 .close-cart {
@@ -586,7 +589,7 @@ header div {
   }
 
   .secondary-menu {
-    margin-top: 82px;
+    padding-top: 82px;
   }
 
   .filter-header-container {
@@ -605,7 +608,7 @@ header div {
   }
 
   .secondary-menu {
-    margin-top: 76px;
+    padding-top: 76px;
   }
 }
 
@@ -625,7 +628,7 @@ header div {
   }
 
   .secondary-menu {
-    margin-top: 70px;
+    padding-top: 70px;
   }
 }
 
@@ -639,7 +642,7 @@ header div {
   }
 
   .secondary-menu {
-    margin-top: 64px;
+    padding-top: 64px;
   }
 }
 
@@ -1985,9 +1988,7 @@ About
 */
 
 .about-page {
-  padding-top: 100px;
-  width: clamp(200px, 75%, 1200px);
-  margin: 0 auto;
+  padding-top: calc(6vw + 80px);
 }
 
 .about-above-the-fold {
@@ -2017,8 +2018,33 @@ About
   font-style: italic;
 }
 
+.pub-about-text {
+  text-align: center;
+  padding: 3vw;
+}
+
+.pub-about-text p {
+  margin-bottom: var(--spacing-md);
+}
+
+.pub-collections-artists-container {
+  display: flex;
+  padding: 3vw;
+  gap: 10%;
+  justify-content: center;
+}
+
+.pub-collections-artists-container > div {
+  width: 40%;
+}
+
 .about-section {
+  display: flex;
   margin-bottom: var(--spacing-lg);
+}
+
+.about-section > div {
+  width: 50%;
 }
 
 .about-text p {
@@ -2083,9 +2109,7 @@ About
 }
 
 .collections-preface {
-  width: calc(25% - var(--spacing-sm));
-  font-style: italic;
-  padding-right: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
 }
 
 .collections-container {
@@ -2096,9 +2120,10 @@ About
 
 .collections-list {
   list-style: none;
-  column-count: 3;
-  gap: var(--spacing-sm);
-  width: 75%;
+}
+
+.collections-list ul {
+  list-style: none;
 }
 
 .talks-lectures p {
@@ -2143,13 +2168,25 @@ About MEDIA
 ===============
 */
 
-@media screen and (max-width: 700px) {
-  .about-page {
-    width: 94vw;
+@media screen and (max-width: 1000px) {
+  .about-page > div {
+    flex-direction: column;
+  }
+
+  .about-page > div:nth-of-type(even) {
+    flex-direction: column-reverse;
+  }
+
+  .about-section > div {
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 600px) {
+  .pub-about-text {
+    padding: 20px;
+  }
+
   .about-service-column {
     width: calc(50% - var(--spacing-sm));
     margin-bottom: var(--spacing-md);
@@ -2169,11 +2206,6 @@ About MEDIA
   }
 
   .collections-preface {
-    width: 100%;
-  }
-
-  .collections-list {
-    column-count: 2;
     width: 100%;
   }
 
