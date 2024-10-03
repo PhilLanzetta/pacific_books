@@ -22,6 +22,7 @@ const About = ({ data }) => {
             <GatsbyImage
               image={images[0].gatsbyImageData}
               alt={images[0].description}
+              className='about-page-img'
             ></GatsbyImage>
           </div>
         </div>
@@ -30,6 +31,7 @@ const About = ({ data }) => {
             <GatsbyImage
               image={images[1].gatsbyImageData}
               alt={images[1].description}
+              className='about-page-img'
             ></GatsbyImage>
           </div>
           <div className='pub-collections-artists-container'>
